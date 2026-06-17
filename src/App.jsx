@@ -153,7 +153,7 @@ export default function App() {
                 className="mt-7 animate-fadeUp rounded-3xl bg-gradient-to-br from-blue-950 to-blue-800 p-5 text-white shadow-xl shadow-blue-950/20 sm:p-6"
                 aria-live="polite"
               >
-                <div className="mb-5 flex items-center justify-between gap-4">
+                <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                   <div>
                     <p className="text-sm font-semibold uppercase tracking-[0.16em] text-blue-100">
                       Calculation
@@ -162,12 +162,12 @@ export default function App() {
                       {gstRate}% GST
                     </h3>
                   </div>
-                  <div className="rounded-2xl bg-white/12 px-4 py-2 text-sm font-bold text-blue-50">
+                  <div className="max-w-full break-words rounded-2xl bg-white/12 px-4 py-2 text-sm font-bold leading-snug text-blue-50 sm:max-w-[52%] sm:text-right">
                     Base {formatCurrency(numericPrice)}
                   </div>
                 </div>
 
-                <div className="grid gap-3 sm:grid-cols-2">
+                <div className="grid gap-3 md:grid-cols-2">
                   <ResultItem label="GST Amount" value={result.gstAmount} />
                   <ResultItem label="CGST" value={result.cgst} />
                   <ResultItem label="SGST" value={result.sgst} />
@@ -193,6 +193,17 @@ export default function App() {
                 visheshsharma00410@gmail.com
               </a>
             </p>
+            <p>
+              <span className="font-bold text-slate-950">GitHub:</span>{' '}
+              <a
+                href="https://github.com/visheshsharma0100"
+                target="_blank"
+                rel="noreferrer"
+                className="font-semibold text-blue-800 hover:text-blue-950"
+              >
+                visheshsharma0100
+              </a>
+            </p>
           </div>
           <a
             href="https://digitalheroesco.com"
@@ -210,9 +221,13 @@ export default function App() {
 
 function ResultItem({ label, value, strong = false }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/10 p-4">
+    <div className="min-w-0 rounded-2xl border border-white/10 bg-white/10 p-4">
       <p className="text-sm font-medium text-blue-100">{label}</p>
-      <p className={`mt-1 ${strong ? 'text-2xl' : 'text-xl'} font-extrabold`}>
+      <p
+        className={`mt-1 break-words font-extrabold leading-tight tracking-normal [overflow-wrap:anywhere] [font-variant-numeric:tabular-nums] ${
+          strong ? 'text-xl sm:text-2xl md:text-xl xl:text-2xl' : 'text-lg sm:text-xl'
+        }`}
+      >
         {formatCurrency(value)}
       </p>
     </div>
